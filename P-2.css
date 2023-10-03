@@ -1,0 +1,18 @@
+nav
+{
+    background-color:antiquewhite;
+    display: flex
+}
+
+#link
+{
+     margin-top: 50px;
+     width: 1000px;
+     margin-left: 500px;
+}
+#logo_damy
+{
+    display: flex;
+    font-size: 1.3rem;
+    gap: 15px;
+}
