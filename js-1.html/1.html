@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Example of inheritance (multilevel)</h1>
+    <hr/>
+    <p id="output1"></p>
+    <p id="output2"></p>
+    <p id="output3"></p>
+    <p id="output4"></p>
+    <script src="common.js"></script>
+    <script>
+        //multilevel inheritance
+        class KB
+        {
+            constructor(bytes)
+            {
+                this.bytes = bytes;
+                console.log('KB class constructor is called...');
+            }
+            getKB()
+            {
+                let temp = this.bytes / 1024; 
+                return temp;
+            }
+        }
+        class MB extends KB
+        {
+            constructor(bytes)
+            {
+                super(bytes);
+                console.log("MB class constructor is called...");
+            }
+            getMB()
+            {
+                let temp = super.getKB() / 1024;
+                return temp;
+            }
+        }
+        class GB extends MB 
+        {
+            constructor(bytes)
+            {
+                super(bytes);
+                console.log("GB class constructor called");
+            }
+            getGB()
+            {
+                let temp = super.getMB() / 1024;
+                return temp;
+            }
+        }
+        class TB extends GB
+        {
+            constructor(bytes)
+            {
+                super(bytes);
+                console.log("TB class constructor called");
+            }
+            getTB()
+            {
+                let temp = super.getGB() / 1024;
+                return temp;
+            }
+        }
+        let bytes = parseInt(prompt("Enter bytes",0));
+        //create MB class object
+        //let object-name = new classname()
+        let g1 = new TB(bytes);
+        let kilobytes = g1.getKB();
+        let megabytes = g1.getMB();
+        let gigabytes = g1.getGB();
+        let terabytes = g1.getTB();
+        $("output1").innerHTML = "kb = " + kilobytes;
+        $("output2").innerHTML = "mb = " + megabytes;
+        $("output3").innerHTML = "gb = " + gigabytes;
+        $("output4").innerHTML = "tb = " + terabytes;
+
+    </script>
+</body>
+</html>
